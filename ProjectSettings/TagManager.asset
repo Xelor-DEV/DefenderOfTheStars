@@ -15,6 +15,7 @@ TagManager:
   - SpriteEliminator
   - Obstacle
   - ObstacleEliminator
+  - Boss
   layers:
   - Default
   - TransparentFX

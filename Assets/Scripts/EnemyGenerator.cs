@@ -13,6 +13,9 @@ public class EnemyGenerator : MonoBehaviour
     [SerializeField] private float kamikazeEnemySpawnRate;
     [SerializeField] private float bossSpawnRate;
     [SerializeField] private GameObject player;
+
+    private GameObject currentBoss = null;
+    private float bossTimer = 0f;
     void Start()
     {
         basicEnemy.GetComponent<BasicEnemy>().playerTransform = player.transform;
@@ -20,7 +23,7 @@ public class EnemyGenerator : MonoBehaviour
 
         StartCoroutine(SpawnBasicEnemy());
         StartCoroutine(SpawnKamikazeEnemy());
-        //StartCoroutine(SpawnBoss());
+        StartCoroutine(SpawnBoss());
     }
 
     IEnumerator SpawnBasicEnemy()
@@ -28,8 +31,11 @@ public class EnemyGenerator : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(basicEnemySpawnRate);
-            Vector2 spawnPosition = new Vector2(9.8f, Random.Range(-4.11f, 4.11f));
-            Instantiate(basicEnemy, spawnPosition, Quaternion.identity);
+            if (currentBoss == null)
+            {
+                Vector2 spawnPosition = new Vector2(9.8f, Random.Range(-4.11f, 4.11f));
+                Instantiate(basicEnemy, spawnPosition, Quaternion.identity);
+            }
         }
     }
 
@@ -38,18 +44,41 @@ public class EnemyGenerator : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(kamikazeEnemySpawnRate);
-            Vector2 spawnPosition = new Vector2(9.8f, Random.Range(-4.11f, 4.11f));
-            Instantiate(kamikazeEnemy, spawnPosition, Quaternion.identity);
+            if (currentBoss == null)
+            {
+                Vector2 spawnPosition = new Vector2(9.8f, Random.Range(-4.11f, 4.11f));
+                Instantiate(kamikazeEnemy, spawnPosition, Quaternion.identity);
+            }
         }
     }
-
     IEnumerator SpawnBoss()
     {
         while (true)
         {
-            yield return new WaitForSeconds(bossSpawnRate);
-            Vector2 spawnPosition = new Vector2(9.8f, Random.Range(-4.11f, 4.11f));
-            Instantiate(boss, spawnPosition, Quaternion.identity);
+            if (currentBoss == null)
+            {
+                bossTimer += Time.deltaTime;
+                if (bossTimer >= bossSpawnRate)
+                {
+                    Vector2 spawnPosition = new Vector2(7.85f, Random.Range(-4.11f, 4.11f));
+                    currentBoss = Instantiate(boss, spawnPosition, Quaternion.identity);
+                    bossTimer = 0f;
+                    StartCoroutine(CheckBossHealth());
+                }
+            }
+            yield return null;
+        }
+    }
+
+    IEnumerator CheckBossHealth()
+    {
+        while (currentBoss != null)
+        {
+            if (currentBoss.GetComponent<BossController>().life <= 0)
+            {
+                currentBoss = null;
+            }
+            yield return new WaitForSeconds(1);
         }
     }
 }

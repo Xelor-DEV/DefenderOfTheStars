@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBullet : MonoBehaviour
+public class BossBullet : MonoBehaviour
 {
     [SerializeField] private PlayerController player;
     [SerializeField] private int damage;

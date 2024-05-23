@@ -12,6 +12,7 @@ public class RangeBullet : MonoBehaviour
     private Rigidbody2D _compRigidbody2D;
     private bool isStationary = false; // Bandera para controlar si el proyectil está quieto
     private float lastDamageTime; // Última vez que se aplicó daño
+    public GameObject powerUp;
     public GameObject explosionPrefab;
     private void Awake()
     {
@@ -50,7 +51,21 @@ public class RangeBullet : MonoBehaviour
                 StartCoroutine(StayAndScale());
             }
         }
-        if (other.tag == "Eliminator")
+        else if (other.tag == "Obstacle")
+        {
+            if (!isStationary)
+            {
+                StartCoroutine(StayAndScale());
+            }
+        }
+        else if (other.tag == "Boss")
+        {
+            if (!isStationary)
+            {
+                StartCoroutine(StayAndScale());
+            }
+        }
+        else if (other.tag == "Eliminator")
         {
             Destroy(this.gameObject);
         }
@@ -122,6 +137,26 @@ public class RangeBullet : MonoBehaviour
                 }
                 lastDamageTime = Time.time;
 
+            }
+            else if (other.tag == "Boss")
+            {
+                // Aplica daño al enemigo
+                BossController enemy = other.gameObject.GetComponent<BossController>();
+                if (enemy != null)
+                {
+                    AudioManagerController.Instance.PlaySfx(5);
+                    enemy.life -= damage;
+                    if (enemy.life <= 0)
+                    {
+                        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+                        PlayerController.Instance.currentPowerUp = powerUp;
+                        AudioManagerController.Instance.PlaySfx(1);
+                        AudioManagerController.Instance.PlaySfx(4);
+                        UIManagerController.Instance.EnemyEliminated();
+                        Destroy(enemy.gameObject);
+                    }
+                }
+                lastDamageTime = Time.time;
             }
         }
     }

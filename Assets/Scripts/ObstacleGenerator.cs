@@ -11,23 +11,29 @@ public class ObstacleGenerator : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < obstaclePrefabs.Length; i++)
+        if (obstaclePrefabs.Length != spawnTimes.Length || obstaclePrefabs.Length != spawnPointsToggle.Length)
         {
-            StartCoroutine(SpawnObstacle(i));
+            Debug.LogError("Los arreglos en el inspector deben de tener la misma longitud");
+            return;
+        }
+
+        for (int i = 0; i < obstaclePrefabs.Length; ++i)
+        {
+            StartCoroutine(SpawnObstacle(obstaclePrefabs[i], spawnTimes[i], spawnPointsToggle[i]));
         }
     }
 
-    IEnumerator SpawnObstacle(int index)
+    IEnumerator SpawnObstacle(GameObject obj, float delay, bool positionSelect)
     {
         while (true)
         {
-            yield return new WaitForSeconds(spawnTimes[index]);
-            Transform spawnPoint = spawnPointsToggle[index] ? spawnPoint1 : spawnPoint2;
-            GameObject obstacle = Instantiate(obstaclePrefabs[index], spawnPoint.position, Quaternion.identity);
+            yield return new WaitForSeconds(delay);
+            Transform spawnPoint = positionSelect ? spawnPoint1 : spawnPoint2;
+            GameObject obstacle = Instantiate(obj, spawnPoint.position, Quaternion.identity);
             Obstacle obstacleScript = obstacle.GetComponent<Obstacle>();
             if (obstacleScript != null)
             {
-                obstacleScript.moveUp = spawnPointsToggle[index];
+                obstacleScript.moveUp = positionSelect;
             }
         }
     }

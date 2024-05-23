@@ -1959,10 +1959,10 @@ MonoBehaviour:
   - {fileID: 4574135620596366298, guid: d354e6ba6ea9ab2458a2a159b6104b7a, type: 3}
   - {fileID: 5022257458706070303, guid: 348941d18547564458566e35dbf72ce0, type: 3}
   spawnTimes:
-  - 1
-  - 2
-  - 3
-  spawnPointsToggle: 010001
+  - 11
+  - 21
+  - 33
+  spawnPointsToggle: 010100
   spawnPoint1: {fileID: 1075589171}
   spawnPoint2: {fileID: 556957819}
 --- !u!1 &550802311
@@ -2124,7 +2124,7 @@ Transform:
   m_GameObject: {fileID: 556957818}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9, y: 5.75, z: 0}
+  m_LocalPosition: {x: -8.69, y: 5.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2773,10 +2773,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basicEnemy: {fileID: 1442974928445397614, guid: ed0aa190cf0400b4aa127fba95d11585, type: 3}
   kamikazeEnemy: {fileID: 8017791745708785489, guid: be3cc70c882604c4a94ef8ab3a4bb4a1, type: 3}
-  boss: {fileID: 0}
+  boss: {fileID: 4663198082452149179, guid: 302bae0661482d24cbbe2d272a7f7caa, type: 3}
   basicEnemySpawnRate: 2
   kamikazeEnemySpawnRate: 5
-  bossSpawnRate: 60
+  bossSpawnRate: 30
   player: {fileID: 1291418175}
 --- !u!4 &751715524
 Transform:
