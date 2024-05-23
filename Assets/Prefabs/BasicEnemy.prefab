@@ -47,14 +47,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68fb1fa5c11297489ca1e71386d28ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  projectileSpeed: 10
-  firingRate: 1
+  speed: 9
+  projectileSpeed: 15
+  firingRate: 0.7
   damage: 1
-  life: 1
+  life: 2
   projectilePrefab: {fileID: 7132768606520739496, guid: c7741e702051f4e498d7f26c6a12462e, type: 3}
   mysteryBoxPrefab: {fileID: 6737227445717874130, guid: 45077a18ae41ce4418d4ea85f4db2766, type: 3}
   playerTransform: {fileID: 0}
+  explosionPrefab: {fileID: 2989987791795518049, guid: eb08c7fb4f0eab24e88b154b7a04bdcb, type: 3}
 --- !u!50 &4534890835328142511
 Rigidbody2D:
   serializedVersion: 4

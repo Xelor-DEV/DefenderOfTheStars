@@ -52,6 +52,7 @@ MonoBehaviour:
   damage: 2
   speed: 10
   damageInterval: 1
+  explosionPrefab: {fileID: 2989987791795518049, guid: eb08c7fb4f0eab24e88b154b7a04bdcb, type: 3}
 --- !u!212 &5469626249252200965
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -93,7 +94,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 37b64517baee61c41b5f470d07095bc4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 502ede3dc2f46fe468355ceab78c8f52, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -165,4 +166,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 7.24
+  m_Radius: 5.74

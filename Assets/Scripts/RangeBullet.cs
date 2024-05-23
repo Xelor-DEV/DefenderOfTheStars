@@ -12,10 +12,14 @@ public class RangeBullet : MonoBehaviour
     private Rigidbody2D _compRigidbody2D;
     private bool isStationary = false; // Bandera para controlar si el proyectil está quieto
     private float lastDamageTime; // Última vez que se aplicó daño
-
+    public GameObject explosionPrefab;
     private void Awake()
     {
         _compRigidbody2D = GetComponent<Rigidbody2D>();
+    }
+    private void Start()
+    {
+        AudioManagerController.Instance.PlaySfx(7);
     }
 
     private void FixedUpdate()
@@ -62,9 +66,11 @@ public class RangeBullet : MonoBehaviour
                 BasicEnemy enemy = other.gameObject.GetComponent<BasicEnemy>();
                 if (enemy != null)
                 {
+                    AudioManagerController.Instance.PlaySfx(5);
                     enemy.life -= damage;
                     if (enemy.life <= 0)
                     {
+                        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
                         // Hay un 20% de probabilidad de soltar una caja misteriosa
                         if (Random.value < 0.3f)
                         {
@@ -83,9 +89,11 @@ public class RangeBullet : MonoBehaviour
                 KamikazeEnemy enemy = other.gameObject.GetComponent<KamikazeEnemy>();
                 if (enemy != null)
                 {
+                    AudioManagerController.Instance.PlaySfx(5);
                     enemy.life -= damage;
                     if (enemy.life <= 0)
                     {
+                        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
                         // Hay un 20% de probabilidad de soltar una caja misteriosa
                         if (Random.value < 0.3f)
                         {

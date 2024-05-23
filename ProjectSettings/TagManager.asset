@@ -12,14 +12,15 @@ TagManager:
   - TripleBullet
   - PerforatorBullet
   - TripleBulletPrefab
+  - SpriteEliminator
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Limits
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 

@@ -171,8 +171,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b83719c75b52e4eaba47419e8d1ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 7
   playerTransform: {fileID: 0}
   damage: 2
-  life: 2
+  life: 3
   mysteryBoxPrefab: {fileID: 6737227445717874130, guid: 45077a18ae41ce4418d4ea85f4db2766, type: 3}
+  explosionPrefab: {fileID: 2989987791795518049, guid: eb08c7fb4f0eab24e88b154b7a04bdcb, type: 3}

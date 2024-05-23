@@ -17,6 +17,7 @@ public class TripleBullet : MonoBehaviour
 
     private void Start()
     {
+        AudioManagerController.Instance.PlaySfx(8);
         // Bala central
         _compRigidBody2D.velocity = new Vector2(speed, 0);
 

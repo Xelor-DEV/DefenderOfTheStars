@@ -43,5 +43,9 @@ public class MysteryBox : MonoBehaviour
             // Destruimos la caja
             Destroy(this.gameObject);
         }
+        else if (collision.tag == "SpriteEliminator")
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

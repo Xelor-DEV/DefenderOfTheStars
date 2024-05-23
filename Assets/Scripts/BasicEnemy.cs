@@ -10,6 +10,7 @@ public class BasicEnemy : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] public GameObject mysteryBoxPrefab;
     public Transform playerTransform;
+    public GameObject explosionPrefab;
     private Vector2 direction;
     private Rigidbody2D _compRigidbody2D;
     private void Awake()
@@ -46,6 +47,8 @@ public class BasicEnemy : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            AudioManagerController.Instance.PlaySfx(4);
             PlayerController.Instance.Life = PlayerController.Instance.Life - damage;
             Destroy(this.gameObject);
         }
@@ -58,10 +61,12 @@ public class BasicEnemy : MonoBehaviour
             BasicBullet bullet = collision.gameObject.GetComponent<BasicBullet>();
             if (bullet != null)
             {
+                AudioManagerController.Instance.PlaySfx(5);
                 life -= bullet.damage;
                 Destroy(bullet.gameObject);
                 if (life <= 0)
                 {
+                    Instantiate(explosionPrefab, transform.position, Quaternion.identity);
                     // Hay un 20% de probabilidad de soltar una caja misteriosa
                     if (Random.value < 0.3f)
                     {
@@ -78,9 +83,11 @@ public class BasicEnemy : MonoBehaviour
             PerforatorBullet bullet = collision.gameObject.GetComponent<PerforatorBullet>();
             if (bullet != null)
             {
+                AudioManagerController.Instance.PlaySfx(5);
                 life -= bullet.damage;
                 if (life <= 0)
                 {
+                    Instantiate(explosionPrefab, transform.position, Quaternion.identity);
                     // Hay un 20% de probabilidad de soltar una caja misteriosa
                     if (Random.value < 0.3f)
                     {
@@ -97,10 +104,12 @@ public class BasicEnemy : MonoBehaviour
             TripleBullet bullet = collision.gameObject.GetComponent<TripleBullet>();
             if (bullet != null)
             {
+                AudioManagerController.Instance.PlaySfx(5);
                 life -= bullet.damage;
                 Destroy(bullet.gameObject);
                 if (life <= 0)
                 {
+                    Instantiate(explosionPrefab, transform.position, Quaternion.identity);
                     // Hay un 20% de probabilidad de soltar una caja misteriosa
                     if (Random.value < 0.3f)
                     {
@@ -117,10 +126,12 @@ public class BasicEnemy : MonoBehaviour
             TripleBulletPrefab bullet = collision.gameObject.GetComponent<TripleBulletPrefab>();
             if (bullet != null)
             {
+                AudioManagerController.Instance.PlaySfx(5);
                 life -= bullet.damage;
                 Destroy(bullet.gameObject);
                 if (life <= 0)
                 {
+                    Instantiate(explosionPrefab, transform.position, Quaternion.identity);
                     // Hay un 20% de probabilidad de soltar una caja misteriosa
                     if (Random.value < 0.3f)
                     {

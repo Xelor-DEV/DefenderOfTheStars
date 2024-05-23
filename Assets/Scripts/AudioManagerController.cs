@@ -55,6 +55,7 @@ public class AudioManagerController : MonoBehaviour
     public void LoadAudioSettings()
     {
         musicConfiguration.value = audioSettings.musicVolume;
+
         sfxConfiguration.value = audioSettings.sfxVolume;
         masterConfiguration.value = audioSettings.masterVolume;
         SetVolumeOfMusic();
