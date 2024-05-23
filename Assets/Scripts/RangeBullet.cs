@@ -106,6 +106,23 @@ public class RangeBullet : MonoBehaviour
                 }
                 lastDamageTime = Time.time;
             }
+            else if (other.tag == "Obstacle")
+            {
+                Obstacle enemy = other.gameObject.GetComponent<Obstacle>();
+                if (enemy != null)
+                {
+                    enemy.SelectSound();
+                    enemy.life -= damage;
+                    if (enemy.life <= 0)
+                    {
+                        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+                        AudioManagerController.Instance.PlaySfx(4);
+                        Destroy(enemy.gameObject);
+                    }
+                }
+                lastDamageTime = Time.time;
+
+            }
         }
     }
 

@@ -1,37 +1,34 @@
 using System.Collections;
 using UnityEngine;
 
-public class ObjectGenerator : MonoBehaviour
+public class ObstacleGenerator : MonoBehaviour
 {
-    public GameObject[] objectsToGenerate; // Arreglo de objetos a generar
-    public float[] generationTimes; // Arreglo de tiempos de generación
-    public float[] yPositions; // Arreglo de posiciones Y para cada objeto
+    public GameObject[] obstaclePrefabs; // Arreglo de prefabs de obstáculos
+    public float[] spawnTimes; // Arreglo de tiempos de generación
+    public bool[] spawnPointsToggle; // Arreglo de booleanos para elegir el punto de generación
+    public Transform spawnPoint1; // Primer punto de generación
+    public Transform spawnPoint2; // Segundo punto de generación
 
-    private void Start()
+    void Start()
     {
-        if (objectsToGenerate.Length != generationTimes.Length || objectsToGenerate.Length != yPositions.Length)
+        for (int i = 0; i < obstaclePrefabs.Length; i++)
         {
-            Debug.LogError("Los arreglos objectsToGenerate, generationTimes y yPositions deben tener la misma longitud.");
-            return;
-        }
-
-        for (int i = 0; i < objectsToGenerate.Length; i++)
-        {
-            StartCoroutine(GenerateObject(objectsToGenerate[i], generationTimes[i], yPositions[i]));
+            StartCoroutine(SpawnObstacle(i));
         }
     }
 
-    private IEnumerator GenerateObject(GameObject obj, float delay, float yPos)
+    IEnumerator SpawnObstacle(int index)
     {
         while (true)
         {
-            yield return new WaitForSeconds(delay);
-
-            // Genera el objeto en una posición Y aleatoria entre -yPos y yPos
-            float randomY = Random.Range(-yPos, yPos);
-            Vector3 spawnPosition = new Vector3(transform.position.x, randomY,0);
-
-            Instantiate(obj, spawnPosition, Quaternion.identity);
+            yield return new WaitForSeconds(spawnTimes[index]);
+            Transform spawnPoint = spawnPointsToggle[index] ? spawnPoint1 : spawnPoint2;
+            GameObject obstacle = Instantiate(obstaclePrefabs[index], spawnPoint.position, Quaternion.identity);
+            Obstacle obstacleScript = obstacle.GetComponent<Obstacle>();
+            if (obstacleScript != null)
+            {
+                obstacleScript.moveUp = spawnPointsToggle[index];
+            }
         }
     }
 }

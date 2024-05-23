@@ -13,6 +13,8 @@ TagManager:
   - PerforatorBullet
   - TripleBulletPrefab
   - SpriteEliminator
+  - Obstacle
+  - ObstacleEliminator
   layers:
   - Default
   - TransparentFX
