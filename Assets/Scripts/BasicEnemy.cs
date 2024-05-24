@@ -68,7 +68,7 @@ public class BasicEnemy : MonoBehaviour
                 {
                     Instantiate(explosionPrefab, transform.position, Quaternion.identity);
                     // Hay un 20% de probabilidad de soltar una caja misteriosa
-                    if (Random.value < 0.3f)
+                    if (Random.value < 0.2f)
                     {
                         Instantiate(mysteryBoxPrefab, transform.position, Quaternion.identity);
                     }
@@ -89,7 +89,7 @@ public class BasicEnemy : MonoBehaviour
                 {
                     Instantiate(explosionPrefab, transform.position, Quaternion.identity);
                     // Hay un 20% de probabilidad de soltar una caja misteriosa
-                    if (Random.value < 0.3f)
+                    if (Random.value < 0.2f)
                     {
                         Instantiate(mysteryBoxPrefab, transform.position, Quaternion.identity);
                     }
@@ -111,7 +111,7 @@ public class BasicEnemy : MonoBehaviour
                 {
                     Instantiate(explosionPrefab, transform.position, Quaternion.identity);
                     // Hay un 20% de probabilidad de soltar una caja misteriosa
-                    if (Random.value < 0.3f)
+                    if (Random.value < 0.2f)
                     {
                         Instantiate(mysteryBoxPrefab, transform.position, Quaternion.identity);
                     }
@@ -133,7 +133,7 @@ public class BasicEnemy : MonoBehaviour
                 {
                     Instantiate(explosionPrefab, transform.position, Quaternion.identity);
                     // Hay un 20% de probabilidad de soltar una caja misteriosa
-                    if (Random.value < 0.3f)
+                    if (Random.value < 0.2f)
                     {
                         Instantiate(mysteryBoxPrefab, transform.position, Quaternion.identity);
                     }

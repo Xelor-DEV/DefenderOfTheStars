@@ -60,7 +60,7 @@ public class EnemyGenerator : MonoBehaviour
                 bossTimer += Time.deltaTime;
                 if (bossTimer >= bossSpawnRate)
                 {
-                    Vector2 spawnPosition = new Vector2(7.85f, Random.Range(-4.11f, 4.11f));
+                    Vector2 spawnPosition = new Vector2(6.784312f, Random.Range(-4.11f, 4.11f));
                     currentBoss = Instantiate(boss, spawnPosition, Quaternion.identity);
                     bossTimer = 0f;
                     StartCoroutine(CheckBossHealth());

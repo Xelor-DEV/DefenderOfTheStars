@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3713952052439952667}
   - component: {fileID: 9173589693599228203}
   - component: {fileID: 2133231726246877358}
-  - component: {fileID: 7266963874435676013}
+  - component: {fileID: 7109461163668236814}
   m_Layer: 0
   m_Name: Basura Espacial
   m_TagString: Obstacle
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.689724, y: -2.624778, z: 0}
-  m_LocalScale: {x: 0.59828395, y: 0.59828395, z: 0.59828395}
+  m_LocalScale: {x: 0.06947273, y: 0.06947273, z: 0.06947273}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e856fa872d6791344965a3fbbdd8554c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 880766ec1e5fdd54b83dc61d7d5eab43, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6e448aa78b59fc40a043f5783843f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 7
   life: 2
   damage: 2
   moveUp: 0
@@ -135,8 +135,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &7266963874435676013
-BoxCollider2D:
+--- !u!70 &7109461163668236814
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -167,16 +167,6 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.12, y: 1.36}
-    newSize: {x: 5.7, y: 4.38}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.02, y: 1.03}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: -1.19}
+  m_Size: {x: 18.52, y: 10.13}
+  m_Direction: 1

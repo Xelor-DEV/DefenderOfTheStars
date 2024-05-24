@@ -3,6 +3,7 @@ public class MysteryBox : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private GameObject[] powerUps; // Los prefabs de los power ups
+    [SerializeField] private float[] powerUpProbabilities; // Las probabilidades de los power ups
 
     private Rigidbody2D _compRigidbody2D;
 
@@ -22,8 +23,8 @@ public class MysteryBox : MonoBehaviour
         // Cuando el jugador colisiona con la caja...
         if (collision.tag == "Player")
         {
-            // Seleccionamos un power up al azar
-            int randomIndex = Random.Range(0, powerUps.Length + 1);
+            // Seleccionamos un power up basado en las probabilidades
+            int randomIndex = GetRandomPowerUpIndex();
 
             // Si el índice es igual a la longitud del arreglo, entonces el power up es el de aumentar vida
             if (randomIndex == powerUps.Length)
@@ -47,5 +48,35 @@ public class MysteryBox : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private int GetRandomPowerUpIndex()
+    {
+        float total = 0;
+        foreach (float elem in powerUpProbabilities)
+        {
+            total += elem;
+        }
+
+        float randomPoint = Random.value * total;
+        for (int i = 0; i < powerUpProbabilities.Length; i++)
+        {
+            if (randomPoint < powerUpProbabilities[i])
+            {
+                if (PlayerController.Instance.currentPowerUp != powerUps[i] || i == powerUps.Length)
+                {
+                    return i;
+                }
+                else
+                {
+                    return GetRandomPowerUpIndex();
+                }
+            }
+            else
+            {
+                randomPoint -= powerUpProbabilities[i];
+            }
+        }
+        return powerUpProbabilities.Length; // Devuelve el índice para aumentar vida
     }
 }
